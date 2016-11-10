@@ -45,8 +45,11 @@ summary(unitRootP2)
 m1 <- lm(lnP1 ~ lnP2, data = pairs_train)
 wt <- m1$residuals
 wtWithDate <- as.data.frame(cbind(as.Date(pairs_train$Date),wt))
-colnames(wt) <- c("Date","wt")
-wtPlot <- ggplot(wtWithDate)+geom_line(aes(x=Date,y=wt))
+colnames(wtWithDate) <- c("Date","wt")
+wtPlot <- ggplot(wtWithDate) +
+  geom_line(aes(x=Date,y=wt)) +
+  ylab("Spread") +
+  xlab("")
 
 # VERIFICANDO ESTACIONARIEDADE DO RESIDUO
 unitRootWt <- ur.df(wt,type=c('none'), lags=1, selectlags = c('BIC'))
