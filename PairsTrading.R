@@ -44,7 +44,7 @@ summary(unitRootP2)
 # REGREDINDO UMA SERIE NA OUTRA PARA OBTER RESIDUO
 m1 <- lm(lnP1 ~ lnP2, data = pairs_train)
 wt <- m1$residuals
-wtWithDate <- as.data.frame(cbind(as.Date(pairs_train$Date),wt))
+wtWithDate <- as.data.frame(cbind(seq(1,length(wt),1),wt))
 colnames(wtWithDate) <- c("Date","wt")
 wtPlot <- ggplot(wtWithDate) +
   geom_line(aes(x=Date,y=wt)) +
