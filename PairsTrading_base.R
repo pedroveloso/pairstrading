@@ -28,7 +28,7 @@ rm(list = c("papel1" , "papel2"))
 library(ggplot2)
 library(reshape2)
 
-logPrices <- ggplot(data = melt(pairsT,id.var="Date")) +
+logPrices <- ggplot(data = melt(pairs_train,id.var="Date")) +
   geom_line(aes(x=Date,y=value,colour=variable)) +
   scale_colour_manual(values = c("blue", "red")) +
   ylab("Log price") +
@@ -68,8 +68,6 @@ traco <- ca.jo(par, type = "trace", ecdet = "const", K = 2, spec = "transitory")
 summary(traco)
 eigen <- ca.jo(par, type = "eigen", ecdet = "const", K = 2, spec = "transitory")
 summary(eigen)
-
-
 
 
 
